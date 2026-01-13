@@ -380,7 +380,7 @@
                 <div class="stat-card" style="border: 2px solid rgba(231, 76, 60, 0.4);">
                     <div class="stat-label">Unlocked (Sold/Transferred)</div>
                     <div class="stat-value" style="color: #e74c3c;" id="unlockedTotal">0</div>
-                    <div class="stat-percent" id="unlockedPercent">0%</div>
+                    <div class="stat-percent" style="color: #999;">No longer in supply</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Proportion Unlocked</div>
@@ -390,7 +390,7 @@
                 <div class="stat-card">
                     <div class="stat-label">Grand Total</div>
                     <div class="stat-value total" id="grandTotal">0</div>
-                    <div class="stat-percent">All tracked wallets</div>
+                    <div class="stat-percent">Excluding previously unstaked and sold</div>
                 </div>
             </div>
 
@@ -690,12 +690,10 @@
             const liquidPct = grandTotal > 0 ? (totalLiquid / grandTotal * 100).toFixed(1) : 0;
             const stakedPct = grandTotal > 0 ? (totalStaked / grandTotal * 100).toFixed(1) : 0;
             const lockedPct = grandTotal > 0 ? (totalLocked / grandTotal * 100).toFixed(1) : 0;
-            const unlockedPct = grandTotal > 0 ? (totalUnlocked / grandTotal * 100).toFixed(1) : 0;
 
             document.getElementById('liquidPercent').textContent = `${liquidPct}%`;
             document.getElementById('stakedPercent').textContent = `${stakedPct}%`;
             document.getElementById('lockedPercent').textContent = `${lockedPct}%`;
-            document.getElementById('unlockedPercent').textContent = `${unlockedPct}%`;
 
             // Calculate proportion: unlocked / (staked + locked + unlocked)
             const totalStakedAndUnstaking = totalStaked + totalLocked + totalUnlocked;
