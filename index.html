@@ -408,7 +408,7 @@
             <div class="table-container">
                 <h2 style="margin-bottom: 15px;">Wallet Details</h2>
                 <p style="color: #999; margin-bottom: 15px; font-size: 0.9em;">
-                    <span style="color: #e74c3c;">● Red rows</span> indicate wallets with unlocked unstaking balances (likely sold/transferred)
+                    <span style="color: #e74c3c;">● Red rows</span> indicate wallets with unlocked unstaking balances AND less than 10 liquid HYPE (likely sold/transferred)
                 </p>
                 <table id="walletTable">
                     <thead>
@@ -709,8 +709,8 @@
             for (const wallet of walletData) {
                 const row = tbody.insertRow();
 
-                // Add red background if they have unlocked tokens (likely sold)
-                if (wallet.hasSold) {
+                // Add red background if staking is done AND they have less than 10 liquid HYPE
+                if (wallet.hasSold && wallet.liquid < 10) {
                     row.className = 'sold-row';
                 }
 
